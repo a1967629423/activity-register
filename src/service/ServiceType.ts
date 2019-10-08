@@ -34,7 +34,7 @@ var TicketSchema = Joi.object({
     remainingQuantity:Joi.number().min(0).required(),
     price:Joi.number().min(0).required(),
     type:Joi.string().valid('normal','moreinfo').default('normal'),
-    modules:Joi.when(Joi.ref('type'),{is:'morinfo',then:Joi.array().items(TicketModuleSchema).required()})
+    modules:Joi.when(Joi.ref('type'),{is:'moreinfo',then:Joi.array().items(TicketModuleSchema).required()})
 })
 var TicketPostInfoQuestionSchema = Joi.object({
     id:Joi.number().required(),
