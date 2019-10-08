@@ -11,7 +11,7 @@ function generateFakeTicket(title: string, description: string, remainingQuantit
         title,
         description,
         price,
-        type: modules ? '' : '',
+        type: modules ? 'moreinfo' : 'normal',
         modules: modules ? modules : [],
         remainingQuantity
     }

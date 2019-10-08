@@ -46,8 +46,12 @@ var TicketPostInfoModuleSchema = Joi.object({
 })
 var TicketPostInfoSchema = Joi.object({
     id:Joi.number().required(),
+    baseInfo:Joi.object({
+        phoneNumber:Joi.string().regex(/[1-9]\d{10}/).required(),
+        email:Joi.string().email().required()
+    }),
     type:Joi.string().valid('normal','moreinfo').default('normal'),
-    infos:Joi.when(Joi.ref('type'),{is:'morinfo',then:Joi.array().items(TicketPostInfoModuleSchema).required()})
+    moduleInfos:Joi.when(Joi.ref('type'),{is:'morinfo',then:Joi.array().items(TicketPostInfoModuleSchema).required()})
 })
 var ErrorPostSchema = Joi.object({
     message:Joi.string().required(),
