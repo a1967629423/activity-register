@@ -11,7 +11,10 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: ()=>import('./views/TicketsRenderComponent.vue'),
+      meta:{
+        title:'活动报名'
+      }
     },
     {
       path: '/about',

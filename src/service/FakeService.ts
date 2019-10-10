@@ -13,19 +13,35 @@ function generateFakeTicket(title: string, description: string, remainingQuantit
         price,
         type: modules ? 'moreinfo' : 'normal',
         modules: modules ? modules : [],
-        remainingQuantity
+        remainingQuantity,
+        baseInfos: [
+            {
+                id: 0,
+                title: '手机号',
+                description: '请输入您的手机号',
+                type: 'text',
+                optionList: []
+            },
+            {
+                id: 1,
+                title: '邮箱',
+                description: '请输入您的邮箱',
+                type: 'text',
+                optionList: []
+            }
+        ]
     }
 }
-function generateFakeSeat():Seat[][]{
-    let seats:Seat[][] = [];
-    for(let i =0;i<6;i++){
-        let layer:Seat[] = [];
-        for(let j =0;j<6;j++){
+function generateFakeSeat(): Seat[][] {
+    let seats: Seat[][] = [];
+    for (let i = 0; i < 6; i++) {
+        let layer: Seat[] = [];
+        for (let j = 0; j < 6; j++) {
             let rand = Math.random();
-            let status = rand>0.3?'enable':rand>0.2?'used':rand>0.1?'disable':'used';
-            let seat:Seat = {
-                position:{
-                    x:i,y:j
+            let status = rand > 0.3 ? 'enable' : 'used';
+            let seat: Seat = {
+                position: {
+                    x: j, y: i
                 },
                 status,
             }
@@ -50,22 +66,29 @@ export class FakeService implements Service {
                         title: '姓名',
                         description: '请输入您的真实姓名',
                         type: 'text',
-                        answerList: []
+                        optionList: []
                     },
                     {
-                        id:0,
-                        title:'身份证号',
-                        type:'text',
-                        description:'由于现场安保需要,请输入您的身份证号',
-                        answerList:[]
+                        id: 1,
+                        title: '身份证号',
+                        type: 'text',
+                        description: '由于现场安保需要,请输入您的身份证号',
+                        optionList: []
+                    },
+                    {
+                        id: 2,
+                        title: '性别',
+                        type: 'radio',
+                        description: '',
+                        optionList: ['男性', '女性', '其他', '不愿透露']
                     }
-                    
+
                 ],
 
             }])
         ];
     }
-    async getSeats(ticket:Ticket): Promise<Seat[][]> {
+    async getSeats(ticket: Ticket): Promise<Seat[][]> {
         await setTimeoutAsync(500);
         return generateFakeSeat();
     }
