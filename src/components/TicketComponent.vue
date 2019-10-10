@@ -98,6 +98,7 @@ $button-color-active: rgb(25, 186, 255);
             width: 0;
             vertical-align: middle;
         }
+        text-align: center;
         padding: 0 15px;
         box-sizing: border-box;
     }
