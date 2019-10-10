@@ -61,7 +61,7 @@ var TicketPostInfoTickets = Joi.object({
     id:Joi.number().required(),
     baseInfos:Joi.array().items(TicketPostInfoQuestionSchema),
     type:Joi.string().valid('normal','moreinfo').default('normal'),
-    moduleInfos:Joi.when(Joi.ref('type'),{is:'morinfo',then:Joi.array().items(TicketPostInfoModuleSchema).required()})
+    moduleInfos:Joi.when(Joi.ref('type'),{is:'moreinfo',then:Joi.array().items(TicketPostInfoModuleSchema).required()})
 })
 var TicketPostInfoSchema = Joi.object({
     tickets:Joi.array().items(TicketPostInfoTickets).min(1),

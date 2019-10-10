@@ -132,6 +132,7 @@ export default class TicketsRenderComponent extends Vue {
                 totalPrice:this.totalpirce
             }
         })
+        console.log(JSON.stringify(this.$store.state))
         let result = await this.$store.dispatch('postData')
         if(result.success){
             this.$notify({title:'提交成功',message:'您成功提交了订单',type:'success'});
