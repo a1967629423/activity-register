@@ -18,14 +18,14 @@
                 .left
                     .total-tickets
                         span 共
-                        span.num {{sum}}
+                        span.num {{` ${sum} `}}
                         span 张票
                     .total-price
                         span 合计
                         span.num 
-                            span.int {{Math.floor(totalpirce)}}
+                            span.int {{' '+Math.floor(totalpirce)}}
                             span .
-                            span.dec {{((totalpirce.toFixed(2)-Math.floor(totalpirce))*100).toFixed(0)}}
+                            span.dec {{((totalpirce.toFixed(2)-Math.floor(totalpirce))*100).toFixed(0)+' '}}
                         span 元
                 .right
                     button.pay(@click="confirm") 立即支付
